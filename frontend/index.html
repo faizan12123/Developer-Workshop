@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+</head>
+<body>
+    <h1>Contact Information</h1>
+    <button id="getContactInfo">Give me contact information</button>
+    <div id="contactInfo">Place Holder</div>
+
+    <script>
+        // Function to fetch and display contact information
+        function getContactInformation() {
+            fetch('http://localhost:3000/contactinformation/')
+                .then(response => response.json())
+                .then(data => {
+                    const contactInfoDiv = document.getElementById('contactInfo');
+                    contactInfoDiv.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Add a click event listener to the button
+        const getContactInfoButton = document.getElementById('getContactInfo');
+        getContactInfoButton.addEventListener('click', getContactInformation);
+    </script>
+</body>
+</html>
